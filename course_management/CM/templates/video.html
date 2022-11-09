@@ -6,10 +6,17 @@
     <div class="row">
         <div class="col-12 text-center">
 
-            <video controls style="height: 70vh">
-                <source src="{{ video.url.url }}" type="video/mp4">
+            <video
+            id="my-video"
+            class="video-js"
+            controls
+            preload="auto"
+            width="640"
+            height="264">
+                <source src="{{ video.url.url }}" >
               Your browser does not support the video tag.
               </video>
+              <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
         </div>
     </div>
 </div>
