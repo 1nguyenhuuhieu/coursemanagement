@@ -117,7 +117,7 @@ def my_course_detail(request, id):
 
 @login_required
 def video(request, id):
-    video = get_object_or_404(Video, pk=id, courses__course__usercourse__user=request.user)
+    video = get_object_or_404(Video, pk=id)
 
     context = {
         'video': video
