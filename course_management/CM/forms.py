@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import *
+from django.forms import ModelForm
 
 
 # Create your forms here.
@@ -18,3 +20,14 @@ class NewUserForm(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+
+class UserCourseForm(ModelForm):
+	class Meta:
+		model = UserCourse
+		fields = ['user', 'course', 'status']
+		widgets = {
+			'user': forms.HiddenInput(),
+			'course': forms.HiddenInput(),
+			'status': forms.HiddenInput()
+		
+		}

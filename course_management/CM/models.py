@@ -9,12 +9,13 @@ class Course(models.Model):
     img = models.ImageField(upload_to='images/')
     descreption = models.CharField(max_length=1000)
     price = models.IntegerField()
+    videos = models.ManyToManyField('Video', blank=True)
 
     def __str__(self):
         return self.title
 
 class Video(models.Model):
-    course = models.ManyToManyField(Course)
+    courses = models.ManyToManyField(Course, blank=True)
     title = models.CharField(max_length=200)
     descreption = models.CharField(max_length=1000)
     url = models.FileField()
@@ -39,7 +40,10 @@ class UserCourse(models.Model):
         ('purchased', 'Đã thanh toán')
     ]
 
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='added')
+
+    class Meta:
+        unique_together = ['user', 'course']
 
     def __str__(self):
         return f"{self.user}, {self.course}"

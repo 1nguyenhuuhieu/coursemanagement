@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Chi tiết video</h1>
+
+            <videocontrols>
+                <source src="{{ video.url.url }}" type="video/mp4">
+              Your browser does not support the video tag.
+              </video>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-12">
+            <h1>Chi tiết khóa học</h1>
+            <ul>
+                {% for video in videos %}
+        
+                <li><a href="{% url 'video' video.id %}">{{ video.title }}dd</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

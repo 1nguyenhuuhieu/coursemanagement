@@ -16,7 +16,8 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(UserCourse)
 class UserCourseAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('user', 'course', 'status')
+    list_filter = ('course', 'status')
 
 @admin.register(CourseReaction)
 class CourseReactionAdmin(admin.ModelAdmin):

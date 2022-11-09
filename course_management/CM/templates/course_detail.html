@@ -4,14 +4,21 @@
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8 col-12">
             <img src="{{ course.img.url }}" class="img-fluid rounded shadow-sm border mb-3" alt="">
-            <button class="btn btn-lg btn-outline-primary">Thêm vào giỏ hàng</button>
-            <button class="btn btn-lg btn-primary">Mua ngay khóa học</button>
+            <form method="post" class="mb-3">
+                {% csrf_token %}
+                {{form}}
+                <button class="btn btn-lg btn-outline-dark" type="submit">Thêm vào giỏ hàng</button>
+                <button class="btn btn-lg btn-warning" type="submit" name="redirectCart">Mua ngay khóa học</button>
+            </form>
+        
+
             <h1>{{ course.title }}</h1>
             <h3>{{ course.price }}</h3>
 
             <p>
                 {{ course.title }}
             </p>
+           
         </div>
 
     </div>

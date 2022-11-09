@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Khóa học của tôi</h1>
+            <ul>
+                {% for course in courses %}
+                <li> <a href="{% url 'my_course_detail' course.id %}">{{ course.course.title }}</a> </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock%}
