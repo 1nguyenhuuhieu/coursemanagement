@@ -5,6 +5,8 @@ from .forms import *
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import JsonResponse
+from django.core.serializers import serialize
 # Create your views here.
 
 def index(request):
@@ -124,3 +126,10 @@ def video(request, id):
     }
 
     return render(request, 'video.html', context)
+
+def search_data(request):
+    courses = Course.objects.all().values('title')
+    courses_list = list(courses)
+    response = JsonResponse(courses_list, safe=False)
+
+    return response

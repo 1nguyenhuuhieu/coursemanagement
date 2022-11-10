@@ -11,5 +11,6 @@ urlpatterns = [
     path('my-courses/', views.my_courses, name='my-courses'),
     path('courses/', views.courses, name='courses'),
     path('my-course-detail/<int:id>/', views.my_course_detail, name='my_course_detail'),
-    path('video/<int:id>', views.video, name='video')
+    path('video/<int:id>', views.video, name='video'),
+    path('search-data/', views.search_data, name='search_data')
 ]

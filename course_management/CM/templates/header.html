@@ -18,9 +18,30 @@
         </ul>
 
         <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Tìm khóa học" aria-label="Search" list="datalistOptions" id="exampleDataList">
+            <datalist id="datalistOptions">
+            </datalist>
             <button class="btn btn-light" type="submit">Tìm</button>
         </form>
+        <script>
+          function pushData(data){
+            dataList = document.getElementById("datalistOptions");
+            for (i in data) {
+              let option = document.createElement("option");
+              option.text = data[i].title
+              console.log("add")
+              dataList.appendChild(option)
+            }
+            
+          }
+          function getData(){
+            fetch('http://127.0.0.1:8000/search-data/')
+            .then((response) => response.json())
+            .then((data) => pushData(data));
+          }
+          getData()
+        </script>
+        
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           
             {% if not request.user.is_authenticated %}
