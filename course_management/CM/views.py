@@ -129,7 +129,7 @@ def my_course_detail(request, id):
 
     context = {
         'course': course,
-        'videos': videos
+        'videos': videos,
     }
 
     return render(request, 'my-course-detail.html', context)

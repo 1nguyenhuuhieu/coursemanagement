@@ -31,3 +31,12 @@ class UserCourseForm(ModelForm):
 			'status': forms.HiddenInput()
 		
 		}
+		
+class CourseReactionForm(ModelForm):
+	class Meta:
+		model = CourseReaction
+		fields = ['user','course','status']
+		widgets = {
+			'user': forms.HiddenInput(),
+			'course': forms.HiddenInput(),
+		}
