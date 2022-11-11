@@ -16,8 +16,52 @@
             <h3>{{ course.price }}</h3>
 
             <p>
-                {{ course.title }}
+                {{ course.descreption }}
             </p>
+            <hr>
+            <h4>Đánh giá: <small> {{ like_count }} <i class="bi bi-hand-thumbs-up-fill me-2"></i>
+                {{ dislike_count }} <i class="bi bi-hand-thumbs-down-fill"></i></small></h4>
+            <p>
+
+                
+                <div id="rate">
+
+                </div>
+            <script>
+                let rate = document.getElementById('rate');
+
+                for (let i = 0; i < {{ rate|add:"0" }}; i++){
+                    
+                    let node = document.createElement("i");
+                    node.classList.add("bi");
+                    node.classList.add("bi-star-fill");
+                    rate.appendChild(node);
+                }
+
+                for (let i = 0; i < {{ rate_remain|add:"0" }}; i++){
+                    
+                    let node = document.createElement("i");
+                    node.classList.add("bi");
+                    node.classList.add("bi-star");
+                    rate.appendChild(node);
+                }
+
+            </script>
+            <small>({{ reactions_count }} lượt đánh giá)</small>
+            </p>   
+            <p>
+
+            </p>
+            <hr>
+            <h4>Nhận xét</h4>
+            {% for comment in comments %}
+            <p>
+                <span class="fw-bold">{{ comment.user }}</span>
+                <small class="fst-italic">{{ comment.time_added}}</small>
+                - 
+                {{ comment.comment }}
+            </p>
+            {% endfor %}
            
         </div>
 

@@ -12,5 +12,6 @@ urlpatterns = [
     path('courses/', views.courses, name='courses'),
     path('my-course-detail/<int:id>/', views.my_course_detail, name='my_course_detail'),
     path('video/<int:id>', views.video, name='video'),
-    path('search-data/', views.search_data, name='search_data')
+    path('search-data/', views.search_data, name='search_data'),
+    path('search-result/', views.search, name='search_result'),
 ]

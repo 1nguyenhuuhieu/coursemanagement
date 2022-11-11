@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-12">
+            <h1>Kết quả tìm kiếm({{ results.count }})</h1>
+            <ul class="list-group mt-3">
+                {% for result in results %}
+                <a class="list-group-item list-group-item-action" href="{% url 'course_detail' result.id%}">
+                 {{ result.title }}
+            </a>
+                {% endfor %}
+              </ul>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

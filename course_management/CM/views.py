@@ -27,7 +27,18 @@ def courses(request):
 
 def course_detail(request, id):
     course = get_object_or_404(Course, pk=id)
-  
+    comments = CourseComment.objects.filter(course=course).order_by('time_added')
+    reactions = CourseReaction.objects.filter(course=course)
+    reactions_count = reactions.count()
+    like_count = reactions.filter(status='like').count()
+    dislike_count = reactions.filter(status='dislike').count()
+
+    reactions_rate_total = sum(reaction.rate for reaction in reactions)
+    if reactions_count:
+        rate = round(reactions_rate_total/reactions_count)
+    else:
+        rate = 0
+
     if request.method == 'POST':
         if request.user.is_authenticated:
             form = UserCourseForm(request.POST)
@@ -52,7 +63,13 @@ def course_detail(request, id):
     
     context = {
         'course': course,
-        'form': form
+        'form': form,
+        'comments': comments,
+        'reactions_count': reactions_count,
+        'like_count': like_count,
+        'dislike_count': dislike_count,
+        'rate': rate,
+        'rate_remain': 5-rate
     }
     return render(request, 'course_detail.html', context)
 
@@ -133,3 +150,16 @@ def search_data(request):
     response = JsonResponse(courses_list, safe=False)
 
     return response
+
+def search(request):
+
+    if request.method == "GET":
+        results = Course.objects.filter(title__icontains=request.GET['keyword'])
+
+
+    context = {
+        'results': results
+    }
+
+
+    return render(request, 'search_result.html', context)

@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8 col-12">
-            <h1>Chi tiết khóa học</h1>
-            <ul>
+            <h1 class="mb-3">Chi tiết khóa học</h1>
+            <img src="{{ course.course.img.url }}" alt="" class="img-fluid rounded shadow-sm mb-3">
+            <h2>{{ course.course.title }}</h2>
+            <p>{{ course.course.descreption }}</p>
+
+            <hr>
+            <h3 class="mb-3">Danh sách bài học</h3>
+            <ul class="list-group">
                 {% for video in videos %}
         
-                <li><a href="{% url 'video' video.id %}">{{ video.title }}dd</a></li>
+                <a href="{% url 'video' video.id %}" class="list-group-item list-group-item-action">{{ video.title }}</a>
                 {% endfor %}
             </ul>
         </div>
