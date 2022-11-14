@@ -35,8 +35,20 @@ class UserCourseForm(ModelForm):
 class CourseReactionForm(ModelForm):
 	class Meta:
 		model = CourseReaction
-		fields = ['user','course','status']
+		fields = ['user','course','status', 'rate']
 		widgets = {
 			'user': forms.HiddenInput(),
 			'course': forms.HiddenInput(),
+		}
+
+class CourseCommentForm(ModelForm):
+	class Meta:
+		model = CourseComment
+		fields = ['user', 'course', 'comment']
+
+		widgets = {
+			'user': forms.HiddenInput(),
+			'course': forms.HiddenInput(),
+			'comment': forms.Textarea(attrs={'class': 'form-control my-3'})
+
 		}

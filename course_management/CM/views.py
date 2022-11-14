@@ -126,10 +126,41 @@ def my_courses(request):
 def my_course_detail(request, id):
     course = get_object_or_404(UserCourse, pk=id)
     videos = Video.objects.filter(courses=course.course)
+    course_reaction = CourseReaction.objects.filter(course=course.course, user=request.user)
+    
+    if request.method == "POST":
+        comment_form = CourseCommentForm(request.POST)
+        if course_reaction:
+            form = CourseReactionForm(request.POST, instance=course_reaction[0])
+        else:
+            form = CourseReactionForm(request.POST)
+
+        if form.is_valid() and comment_form.is_valid() :
+            form.save()
+            comment_form.save()
+            return redirect('course_detail', course.course.id)
+    else:
+        comment_form = CourseCommentForm(
+            initial={
+                'user': request.user,
+                'course': course.course.id
+            }
+        )
+        if course_reaction:
+            form = CourseReactionForm(instance=course_reaction[0])
+        else:
+            form = CourseReactionForm(
+                initial={
+                    'user': request.user,
+                    'course': course.course.id,
+                }
+            )
 
     context = {
         'course': course,
         'videos': videos,
+        'form': form,
+        'comment_form': comment_form
     }
 
     return render(request, 'my-course-detail.html', context)

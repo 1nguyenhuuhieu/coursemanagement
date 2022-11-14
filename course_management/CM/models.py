@@ -56,8 +56,15 @@ class CourseReaction(models.Model):
     ('like','Thích'),
     ('dislike', 'Không thích')
     ]
+    RATE_CHOICES = [
+        (1,1),
+        (2,2),
+        (3,3),
+        (4,4),
+        (5,5)
+    ]
     status = models.CharField(max_length=10,choices=STATUS_CHOICES)
-    rate = models.IntegerField()
+    rate = models.IntegerField(choices=RATE_CHOICES)
 
 class CourseComment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
