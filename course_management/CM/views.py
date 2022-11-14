@@ -27,7 +27,7 @@ def courses(request):
 
 def course_detail(request, id):
     course = get_object_or_404(Course, pk=id)
-    comments = CourseComment.objects.filter(course=course).order_by('time_added')
+    comments = CourseComment.objects.filter(course=course)
     reactions = CourseReaction.objects.filter(course=course)
     reactions_count = reactions.count()
     like_count = reactions.filter(status='like').count()
