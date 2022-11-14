@@ -2,6 +2,12 @@
 
 {% block content %}
 
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-6">
+
+
+
   {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
   {% endif %}
@@ -27,11 +33,15 @@
         <td>{{ form.password }}</td>
       </tr>
     </table>
-    <input type="submit" value="login">
+    <button class="btn btn-primary" type="submit">Đăng nhập</button>
     <input type="hidden" name="next" value="{{ next }}">
   </form>
 
   {# Assumes you setup the password_reset view in your URLconf #}
   <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
   <p><a href="{% url 'register' %}">Register</a></p>
+</div>
+</div>
+</div>
+
 {% endblock %}

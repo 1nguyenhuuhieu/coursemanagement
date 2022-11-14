@@ -71,8 +71,7 @@
               {{ request.user.username }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end ">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="{% url 'admin:index' %}">Trang quản trị</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'logout' %}">Đăng xuất</a></li>
             </ul>

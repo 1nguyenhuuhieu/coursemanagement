@@ -9,8 +9,9 @@
                 <div class="card-body">
 
                   <h5 class="card-title">{{ course.title }}</h5>
-                  <h5 class="card-title">{{ course.price|intcomma }}đ</h5>
-                  <p class="card-text">{{ course.descreption }}</p>
+                  <hr>
+                  <h5 class="card-title">{{ course.price|intword }} đ</h5>
+                  <p class="card-text">{{ course.descreption|truncatechars:150 }}</p>
                   <a href="{% url 'course_detail' course.id %}" class="btn btn-primary ">Xem chi tiết</a>
                 </div>
               </div>
