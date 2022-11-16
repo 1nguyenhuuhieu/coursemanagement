@@ -4,6 +4,7 @@ from .models import *
 from .forms import *
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.http import JsonResponse
 from django.core.serializers import serialize
@@ -194,3 +195,12 @@ def search(request):
 
 
     return render(request, 'search_result.html', context)
+
+@staff_member_required
+def dashboard(request):
+
+    context = {
+
+    }
+
+    return render(request, 'dashboard.html', context)

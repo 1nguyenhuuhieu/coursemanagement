@@ -16,8 +16,12 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(UserCourse)
 class UserCourseAdmin(admin.ModelAdmin):
-    list_display = ('user', 'course', 'status')
+    list_display = ('user', 'course', 'course_price','status')
     list_filter = ('course', 'status')
+
+    @admin.display(empty_value='???')
+    def course_price(self, obj):
+        return obj.course.price
 
 @admin.register(CourseReaction)
 class CourseReactionAdmin(admin.ModelAdmin):

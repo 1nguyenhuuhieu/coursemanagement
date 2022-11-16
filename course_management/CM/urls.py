@@ -14,4 +14,5 @@ urlpatterns = [
     path('video/<int:id>', views.video, name='video'),
     path('search-data/', views.search_data, name='search_data'),
     path('search-result/', views.search, name='search_result'),
+    path('dashboard/', views.dashboard, name='dashboard'),
 ]
