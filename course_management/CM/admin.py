@@ -16,12 +16,19 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(UserCourse)
 class UserCourseAdmin(admin.ModelAdmin):
-    list_display = ('user', 'course', 'course_price','status')
+    list_display = ('user', 'course', 'course_price','status', 'total')
     list_filter = ('course', 'status')
+
 
     @admin.display(empty_value='???')
     def course_price(self, obj):
         return obj.course.price
+    def total(self, obj):
+        
+        pursched = UserCourse.objects.filter(status='purchased')
+        total = sum(i.course.price for i in pursched)
+        return total
+
 
 @admin.register(CourseReaction)
 class CourseReactionAdmin(admin.ModelAdmin):
