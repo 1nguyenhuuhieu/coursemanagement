@@ -16,9 +16,24 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(UserCourse)
 class UserCourseAdmin(admin.ModelAdmin):
-    list_display = ('user', 'course', 'course_price','status', 'total')
+    list_display = ('user', 'course', 'course_price','status')
     list_filter = ('course', 'status')
+    change_list_template: 'admin/change_form.html'
 
+    def get_total(self):  
+        pursched = UserCourse.objects.filter(status='purchased')
+        total = sum(i.course.price for i in pursched)
+        return total
+
+    def changelist_view(self, request, extra_context = None):
+        context = {
+            'total': self.get_total(),
+
+        }
+
+        return super(UserCourseAdmin, self).changelist_view(
+            request, extra_context=context
+        )
 
     @admin.display(empty_value='???')
     def course_price(self, obj):
