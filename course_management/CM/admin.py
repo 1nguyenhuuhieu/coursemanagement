@@ -18,7 +18,7 @@ class TagAdmin(admin.ModelAdmin):
 class UserCourseAdmin(admin.ModelAdmin):
     list_display = ('user', 'course', 'course_price','status')
     list_filter = ('course', 'status')
-    change_list_template: 'admin/change_form.html'
+    change_list_template: 'admin/change_list.html'
 
     def get_total(self):  
         pursched = UserCourse.objects.filter(status='purchased')
