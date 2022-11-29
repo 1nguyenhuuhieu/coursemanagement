@@ -3,8 +3,8 @@
 {% block content %}
 
 <div class="container">
-  <div class="row">
-    <div class="col-12 col-md-8 col-lg-6">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-3">
 
 
 
@@ -23,6 +23,24 @@
 
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal text-center">Vui lòng đăng nhập</h1>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
+      <label for="floatingInput">Tên đăng nhập</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+      <label for="floatingPassword">Mật khẩu</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Đăng nhập</button>
+  </form>
+  <h6 class="mt-3 text-center"><a href="{% url 'password_reset' %}" class="text-decoration-none">Quên mật khẩu?</a></h6>
+  <h6 class="mt-3 text-center"><a href="{% url 'register' %} "  class="text-decoration-none">Đăng ký tài khoản</a></h6>
+
+
+  <!-- <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
     <table>
       <tr>
         <td>{{ form.username.label_tag }}</td>
@@ -35,11 +53,11 @@
     </table>
     <button class="btn btn-primary" type="submit">Đăng nhập</button>
     <input type="hidden" name="next" value="{{ next }}">
-  </form>
-
+  </form> -->
+<!-- 
   {# Assumes you setup the password_reset view in your URLconf #}
   <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-  <p><a href="{% url 'register' %}">Register</a></p>
+  <p><a href="{% url 'register' %}">Register</a></p> -->
 </div>
 </div>
 </div>

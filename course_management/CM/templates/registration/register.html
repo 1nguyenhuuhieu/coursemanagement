@@ -4,13 +4,38 @@
   
 
 <!--Register--> 
-<div class="container py-5">
-	<h1>Đăng ký tài khoản mới</h1>
-	<form method="POST">
-		{% csrf_token %}
-		{{ register_form.as_p}}                    
-		<button class="btn btn-primary" type="submit">Đăng ký</button>
-	</form>
+<div class="container py-3">
+	<div class="row justify-content-center">
+		<div class="col-12 col-md-6 col-lg-3">
+
+			<h3>Đăng ký tài khoản mới</h3>
+			<form method="POST">
+				{% csrf_token %}
+
+				<div class="form-floating mb-3">
+					<input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
+					<label for="floatingInput">Tên đăng nhập</label>
+				  </div>
+
+				<div class="form-floating mb-3">
+					<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+					<label for="floatingInput">Địa chỉ email</label>
+				  </div>
+				  <div class="form-floating  mb-3">
+					<input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password1">
+					<label for="floatingPassword">Mật khẩu</label>
+				  </div>
+				  <div class="form-floating mb-3">
+					<input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password2">
+					<label for="floatingPassword">Xác nhận mật khẩu</label>
+				  </div>
+				  <button class="btn btn-primary" type="submit">Đăng ký</button>
+
+			</form>
+
+		</div>
+	</div>
+
 </div>
 
 {% endblock %}

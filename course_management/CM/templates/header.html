@@ -49,7 +49,7 @@
           
             {% if not request.user.is_authenticated %}
           <li class="nav-item me-2 mt-lg-0 mt-2">
-            <a class="btn btn-outline-dark" href="{% url 'login' %}">Đăng nhập</a>
+            <a class="btn btn-outline-dark" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right me-2"></i>Đăng nhập</a>
           </li>
 
           <li class="nav-item mt-lg-0 mt-2">
@@ -67,14 +67,14 @@
           </a>
         </li>
           <li class="nav-item mt-lg-0 mt-2 dropdown">
-            <a class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person me-2"></i>
               {{ request.user.username }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end ">
-              <li><a class="dropdown-item" href="{% url 'admin:index' %}">Trang quản trị</a></li>
-              <li><a class="dropdown-item" href="{% url 'dashboard' %}">Trang dashboard</a></li>
+              <li><a class="dropdown-item" href="{% url 'admin:index' %}"><i class="bi bi-speedometer2 me-2"></i>Trang quản trị</a></li>
+
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{% url 'logout' %}">Đăng xuất</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="bi bi-box-arrow-in-left me-2"></i>Đăng xuất</a></li>
             </ul>
           </li>
         </ul>
