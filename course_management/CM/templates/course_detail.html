@@ -7,12 +7,12 @@
             <form method="post" class="mb-3">
                 {% csrf_token %}
                 {{form}}
-                <button class="btn btn-lg btn-outline-dark mb-md-0 mb-3" type="submit">Thêm vào giỏ hàng</button>
-                <button class="btn btn-lg btn-warning" type="submit" name="redirectCart">Mua ngay khóa học</button>
+                <button class="btn btn-lg btn-outline-dark mb-md-0 mb-3" type="submit">Đặt mua</button>
+                <button class="btn btn-lg btn-dark" type="submit" name="redirectCart">Mua ngay khóa học</button>
             </form>
         
 
-            <h1>{{ course.title }}</h1>
+            <h2>{{ course.title }}</h2>
             <h3>{{ course.price }}</h3>
 
             <p>

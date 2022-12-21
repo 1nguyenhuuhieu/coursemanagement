@@ -1,6 +1,6 @@
 {% load humanize %}
 <div class="container">
-    <h3 class="mb-3">Danh sách khoa học đang có</h3>
+    <h3 class="mb-3">Danh sách khoa học</h3>
     <div class="row">
         {% for course in courses %}
         <div class="col-lg-4 col-12 mb-3">
@@ -10,6 +10,7 @@
 
                   <h5 class="card-title">{{ course.title }}</h5>
                   <hr>
+                  <p class="card-title"> {{ course.tag_name }} </p>
                   <h5 class="card-title">{{ course.price|intword }} đ</h5>
                   <p class="card-text">{{ course.descreption|truncatechars:150 }}</p>
                   <a href="{% url 'course_detail' course.id %}" class="btn btn-primary ">Xem chi tiết <i class="bi bi-arrow-right ms-3"></i></a>

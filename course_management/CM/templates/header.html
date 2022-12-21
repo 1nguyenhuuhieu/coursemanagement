@@ -13,10 +13,17 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{% url 'courses' %}">Tất cả khóa học</a>
           </li>
+
+
           {% if request.user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'my-courses' %}">Khóa học của tôi</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'course_notbuy' %}">Khóa học chưa mua</a>
+          </li>
+
           {% endif %}
         </ul>
 

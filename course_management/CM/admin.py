@@ -10,9 +10,10 @@ class CourseAdmin(admin.ModelAdmin):
 class VideoAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
+@admin.register(UserDetail)
+class UserDetailAdmin(admin.ModelAdmin):
     pass
+
 
 @admin.register(UserCourse)
 class UserCourseAdmin(admin.ModelAdmin):

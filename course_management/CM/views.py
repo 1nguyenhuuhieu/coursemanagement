@@ -77,9 +77,18 @@ def course_detail(request, id):
 def register(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
+        phonenumber = request.POST['phonenumber']
+        
+        print(phonenumber)
         if form.is_valid():
             user = form.save()
+            # sau khi đăng ký thành công, thêm số điện thoại vào user detail
+            new_user = user
+            new_userdetail = UserDetail(user=new_user, phone_number=phonenumber)
+            new_userdetail.save()
+
             login(request, user)
+
             messages.success(request, "Registration successful." )
             return redirect("index")
         messages.error(request, "Unsuccessful registration. Invalid information.")
@@ -186,7 +195,7 @@ def search_data(request):
 def search(request):
 
     if request.method == "GET":
-        results = Course.objects.filter(title__icontains=request.GET['keyword'])
+        results = Course.objects.filter(price__icontains=request.GET['keyword'])
 
 
     context = {
@@ -204,3 +213,14 @@ def dashboard(request):
     }
 
     return render(request, 'dashboard.html', context)
+
+def course_notbuy(request):
+
+    courses = Course.objects.all().exclude(usercourse__user=request.user, usercourse__status='purchased')
+
+    context = {
+        'courses': courses
+
+    }
+
+    return render(request, 'course_notbuy.html', context)

@@ -4,12 +4,21 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
+class UserDetail(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_number = models.IntegerField()
+
+    def __str__(self):
+        return self.user.username
+
 class Course(models.Model):
     title = models.CharField(max_length=200)
     img = models.ImageField(upload_to='images/')
     descreption = models.CharField(max_length=1000)
     price = models.IntegerField()
     videos = models.ManyToManyField('Video', blank=True)
+
+    tag_name = models.CharField(max_length=20, blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -23,12 +32,6 @@ class Video(models.Model):
     def __str__(self):
         return self.title
 
-class Tag(models.Model):
-    title = models.CharField(max_length=20)
-    course = models.ManyToManyField(Course)
-
-    def __str__(self):
-        return self.title
 
 class UserCourse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
